@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mine.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container m-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="login border rounded bg-light p-5 mt-5">
+                    <div class="logo text-center"><h1>My Blog</h1></div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                            {{ forms|crispy }}
+                            <p class="text-danger">{{ error }}</p>
+                            <button class="btn btn-info px-5 my-3" type="submit">Signup</button>
+                            <p>{% translate 'Already have an account ?' %}</p>
+                            <p><a href="{% url 'main:login' %}">{% translate 'Sign in' %}</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/mine.js' %}"></script>
+{% endblock %}

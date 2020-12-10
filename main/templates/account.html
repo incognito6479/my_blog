@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mine.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="post_content border rounded bg-light m-3">
+                <form action="{% url 'main:upload' %}" method="post" class="m-3" enctype="multipart/form-data">
+                    <h4 class="mb-4">Create your posts here!</h4>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                      <div class="form-check mb-3">
+                          <input type="checkbox" class="form-check-input" name="anonymous_post" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">{% translate 'Create anonymous post ?' %}</label>
+                      </div>
+                    <button class="btn btn-dark px-4">Create</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="account_info border rounded bg-dark p-4 m-3">
+                <h4 class="text-white">{% translate 'Hello' %} {{ user }}</h4>
+                <p class="text-warning">{% translate 'You can add, edit posts, and leave comments to others' %}</p>
+                <div class="user_buttons">
+                    <button class="btn btn-success rounded-pill">{% translate 'Edit profile' %}</button>
+                    <button class="btn btn-danger rounded-pill"><a class="text-white" href="{% url 'main:logout' %}">{% translate 'Logout' %}</a></button>
+                </div>
+            </div>
+            <div class="user_posts border rounded bg-dark p-4 m-3">
+                <button class="btn btn-info rounded-pill">
+                    <a class="text-white" href="{% url 'main:user-post' %}">My posts</a>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/mine.js' %}"></script>
+{% endblock %}

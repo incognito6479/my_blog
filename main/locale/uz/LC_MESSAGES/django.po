@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-27 15:57+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: main/forms.py:8
+msgid "Name"
+msgstr "Ism"
+
+#: main/forms.py:10 main/forms.py:15 main/templates/login.html:20
+msgid "Login"
+msgstr "Login"
+
+#: main/forms.py:11 main/forms.py:16
+msgid "Password"
+msgstr "Parol"
+
+#: main/forms.py:24
+msgid "Title for your post"
+msgstr "Post uchun sarlavha"
+
+#: main/forms.py:25
+msgid "Text for your post"
+msgstr "Post uchun matn"
+
+#: main/forms.py:26
+msgid "Select image for your post"
+msgstr "Post uchun rasm tanlang"
+
+#: main/models.py:17
+msgid "File size must be lower than 2 mb"
+msgstr "Fayl hajmi 2 MB dan oshmasligi kerak"
+
+#: main/templates/account.html:20
+msgid "Create anonymous post ?"
+msgstr "Post yashirin bo'lsinmi ?"
+
+#: main/templates/account.html:28
+msgid "Hello"
+msgstr "Salom"
+
+#: main/templates/account.html:29
+msgid "You can add, edit posts, and leave comments to others"
+msgstr "Siz post qo'yish va tahrirlash, boshqalarga izoh qoldirishingiz mumkin"
+
+#: main/templates/account.html:31
+msgid "Edit profile"
+msgstr "Profilni tahrirlash"
+
+#: main/templates/account.html:32
+msgid "Logout"
+msgstr "Chiqish"
+
+#: main/templates/layout.html:28
+msgid "Home"
+msgstr "Bosh sahifa"
+
+#: main/templates/layout.html:32
+msgid "My Account"
+msgstr "Shaxsiy kabinet"
+
+#: main/templates/layout.html:36 main/templates/signup.html:22
+msgid "Sign in"
+msgstr "Tizimga kirish"
+
+#: main/templates/layout.html:40
+msgid "Contact"
+msgstr "Biz bilan bog'laning"
+
+#: main/templates/layout.html:74
+msgid "News"
+msgstr "Yangiliklar"
+
+#: main/templates/login.html:21
+msgid "Don't have an account ?"
+msgstr "Shaxsiy kabinet yo'qmi ?"
+
+#: main/templates/login.html:23
+msgid "Register now"
+msgstr "Ro'yhatdan o'tish"
+
+#: main/templates/login.html:24
+msgid "Forgot password ?"
+msgstr "Parolni unutdingizmi ?"
+
+#: main/templates/signup.html:21
+msgid "Already have an account ?"
+msgstr "Shaxsiy kabinet bormi ?"
+
+#: main/views.py:25
+#, fuzzy
+#| msgid "This email is already exists"
+msgid "This email is already exists, type in another email"
+msgstr "Bu email ro'yxatdan o'tgan, boshqa email kiriting"
+
+#: main/views.py:51
+msgid "Login or password is incorrect"
+msgstr "Login yoki parol noto'g'ri"
+
+#~ msgid "Select language"
+#~ msgstr "Tilni tanlang"

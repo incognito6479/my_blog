@@ -1,0 +1,128 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Blog</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mine.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+
+        <div class="container-fluid bg-dark py-2">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand ml-3" href="#"><h3>My Blog</h3></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'main:main' %}">{% translate 'Home' %}</a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'main:account' %}">{% translate 'My Account' %}</a>
+                                </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'main:login' %}">{% translate 'Sign in' %}</a>
+                                    </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{% translate 'Contact' %}</a>
+                            </li>
+                        {% for s in settings.LANGUAGES %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/{{ s.0 }}">{% translate s.1 %}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- end header -->
+        <div class="container mt-5">
+            {% block content %}
+                <div class="row">
+                    <div class="col-md-8 my-2">
+                        <div class="blog">
+                                {% for i in page_obj %}
+                                    <div class="row">
+                                        <div class="col-md-4 blog_img">
+                                            <img src="/{{ i.post_img }}" alt="blog_img" style="width: 100%;">
+                                        </div>
+                                        <div class="col-md-8 blog_content">
+                                            <h3 class="blog_header">{{ i.post_title }}</h3>
+                                            <p class="blog_text text-black-50">{{ i.post_text }}</p>
+                                            <p>Author: {{ i.post_user }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-4 border-left my-2">
+                        <div class="news">
+                            <div class="news_header">{% translate 'News' %}</div>
+                            <p class="news_text text-black-50">News text 1 Lorem ipsum dolor sit amet</p>
+                            <hr>
+                        </div>
+                        <div class="weather">
+                            <div class="news_header">Weather Today</div>
+                            <p class="news_text text-black-50">About weather in Tashkent...</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+            <!-- end paginator -->
+            {% endblock %}
+        </div>
+        <!-- end block -->
+        <div class="container-fluid bg-dark p-3">
+            <div class="footer">
+                <div class="container bg-light">
+                    <div class="col-lg-6 offset-lg-3 text-center p-3">
+                        <h4>Subscribe to get new posts daily!</h4>
+                        <input type="text" placeholder="Email">
+                        <br>
+                        <br>
+                        <button class="btn btn-info">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    {% block scripts %}
+        <script src="{% static 'js/mine.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
